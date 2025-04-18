@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kartu Ucapan Ulang Tahun</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Comic Sans MS', cursive;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      overflow: hidden;
+      position: relative;
+    }
+    /* Latar belakang blur */
+    .background {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: url('ayaaaa.jpg'); /* Ganti dengan foto pacar */
+      background-size: cover;
+      background-position: center;
+      filter: blur(8px); /* Menambahkan efek blur pada background */
+      z-index: -1; /* Agar background berada di belakang konten */
+    }
+    .container {
+      position: relative; /* Agar tetap di atas latar belakang */
+      text-align: center;
+      padding: 20px;
+      border-radius: 20px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.2);
+      background-color: rgba(255, 255, 255, 0.8); /* Memberikan latar belakang transparan */
+      z-index: 1; /* Agar konten berada di atas background */
+    }
+    #message {
+      display: none;
+      animation: fadeIn 2s ease forwards;
+    }
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(20px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+    button {
+      padding: 15px 25px;
+      font-size: 18px;
+      background-color: #ff80ab;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    button:hover {
+      background-color: #ff4d94;
+    }
+    img {
+      width: 300px;
+      margin-top: 20px;
+      border-radius: 15px;
+    }
+    .text {
+      margin-top: 15px;
+      font-size: 20px;
+      color: #d63384;
+    }
+    /* Menyembunyikan elemen audio secara default */
+    audio {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="background"></div> <!-- Elemen latar belakang dengan efek blur -->
+  <div class="container">
+    <div id="intro">
+      <h2>Hai sayang! ❤️</h2>
+      <button onclick="showMessage()">Buka Pesan Rahasia</button>
+    </div>
+    <div id="message">
+      <img src="ulang_tahun_baby.gif" alt="Kue Ulang Tahun" />
+      <audio id="birthday-audio" autoplay loop>
+        <source src="0418.mp3" type="audio/mp3"> 
+      </audio>
+    </div>
+  </div>
+  <script>
+    function showMessage() {
+      document.getElementById('intro').style.display = 'none';
+      document.getElementById('message').style.display = 'block';
+      // Pastikan audio diputar setelah interaksi
+      var audio = document.getElementById('birthday-audio');
+      audio.play(); // Memulai pemutaran audio
+    }
+  </script>
+</body>
+</html>
