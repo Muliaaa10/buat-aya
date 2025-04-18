@@ -14,6 +14,7 @@
       height: 100vh;
       overflow: hidden;
       position: relative;
+      background-color: #f5f5f5;
     }
     /* Latar belakang blur */
     .background {
@@ -72,13 +73,65 @@
     audio {
       display: none;
     }
+
+    /* Animasi balon bergerak */
+    .balloon {
+      position: absolute;
+      bottom: 10px;
+      animation: moveBalloon 5s infinite linear;
+    }
+    @keyframes moveBalloon {
+      0% { left: 0; }
+      50% { left: 50%; transform: translateX(-50%) translateY(-200px); }
+      100% { left: 100%; }
+    }
+
+    /* Animasi orang joget */
+    .dancer {
+      position: absolute;
+      bottom: 20px;
+      left: 80%;
+      animation: dance 3s infinite alternate;
+    }
+    @keyframes dance {
+      0% { transform: rotate(0deg); }
+      50% { transform: rotate(10deg); }
+      100% { transform: rotate(-10deg); }
+    }
+
+    /* Animasi terompet ulang tahun */
+    .trumpet {
+      position: absolute;
+      bottom: 20px;
+      left: 0%;
+      animation: blowTrumpet 4s infinite alternate;
+    }
+    @keyframes blowTrumpet {
+      0% { transform: rotate(0deg); }
+      50% { transform: rotate(10deg); }
+      100% { transform: rotate(-10deg); }
+    }
   </style>
 </head>
 <body>
   <div class="background"></div> <!-- Elemen latar belakang dengan efek blur -->
+  
+  <!-- Elemen balon bergerak -->
+  <img src="balloon.png" class="balloon" alt="Balon" width="50" />
+  <img src="balloon.png" class="balloon" alt="Balon" width="50" style="animation-delay: 1s;" />
+  <img src="balloon.png" class="balloon" alt="Balon" width="50" style="animation-delay: 2s;" />
+  <img src="balloon.png" class="balloon" alt="Balon" width="50" style="animation-delay: 3s;" />
+  <img src="balloon.png" class="balloon" alt="Balon" width="50" style="animation-delay: 4s;" />
+  
+  <!-- Elemen orang joget -->
+  <img src="dancer.png" class="dancer" alt="Orang Joget" width="100" />
+  
+  <!-- Elemen terompet ulang tahun -->
+  <img src="terompet.png" class="trumpet" alt="Terompet" width="0.5" />
+  
   <div class="container">
     <div id="intro">
-      <h2>Hai sayang! ❤️</h2>
+      <h2>Hai Aya! ❤️</h2>
       <button onclick="showMessage()">Buka Pesan Rahasia</button>
     </div>
     <div id="message">
@@ -88,14 +141,18 @@
       </audio>
     </div>
   </div>
+
   <script>
-    function showMessage() {
-      document.getElementById('intro').style.display = 'none';
-      document.getElementById('message').style.display = 'block';
-      // Pastikan audio diputar setelah interaksi
-      var audio = document.getElementById('birthday-audio');
-      audio.play(); // Memulai pemutaran audio
-    }
+      function showMessage() {
+    document.getElementById('intro').style.display = 'none';
+    document.getElementById('message').style.display = 'block';
+
+    // Pastikan audio diputar setelah interaksi
+    var audio = document.getElementById('birthday-audio');
+    audio.play().catch(function(error) {
+      console.log("Autoplay gagal: ", error);
+    });
+  }
   </script>
 </body>
 </html>
