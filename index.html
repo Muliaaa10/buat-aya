@@ -16,27 +16,26 @@
       position: relative;
       background-color: #f5f5f5;
     }
-    /* Latar belakang blur */
     .background {
       position: absolute;
       top: 0;
       left: 0;
       right: 0;
       bottom: 0;
-      background-image: url('ayaaaa.jpg'); /* Ganti dengan foto pacar */
+      background-image: url('ayaaaa.jpg');
       background-size: cover;
       background-position: center;
-      filter: blur(8px); /* Menambahkan efek blur pada background */
-      z-index: -1; /* Agar background berada di belakang konten */
+      filter: blur(8px);
+      z-index: -1;
     }
     .container {
-      position: relative; /* Agar tetap di atas latar belakang */
+      position: relative;
       text-align: center;
       padding: 20px;
       border-radius: 20px;
       box-shadow: 0 0 20px rgba(0,0,0,0.2);
-      background-color: rgba(255, 255, 255, 0.8); /* Memberikan latar belakang transparan */
-      z-index: 1; /* Agar konten berada di atas background */
+      background-color: rgba(255, 255, 255, 0.8);
+      z-index: 1;
     }
     #message {
       display: none;
@@ -69,12 +68,9 @@
       font-size: 20px;
       color: #d63384;
     }
-    /* Menyembunyikan elemen audio secara default */
     audio {
       display: none;
     }
-
-    /* Animasi balon bergerak */
     .balloon {
       position: absolute;
       bottom: 10px;
@@ -85,8 +81,6 @@
       50% { left: 50%; transform: translateX(-50%) translateY(-200px); }
       100% { left: 100%; }
     }
-
-    /* Animasi orang joget */
     .dancer {
       position: absolute;
       bottom: 20px;
@@ -98,8 +92,6 @@
       50% { transform: rotate(10deg); }
       100% { transform: rotate(-10deg); }
     }
-
-    /* Animasi terompet ulang tahun */
     .trumpet {
       position: absolute;
       bottom: 20px;
@@ -114,21 +106,24 @@
   </style>
 </head>
 <body>
-  <div class="background"></div> <!-- Elemen latar belakang dengan efek blur -->
-  
-  <!-- Elemen balon bergerak -->
+  <div class="background"></div>
+
+  <!-- Elemen audio ditempatkan di luar elemen tersembunyi -->
+  <audio id="birthday-audio" loop>
+    <source src="0418.mp3" type="audio/mp3"> 
+  </audio>
+
+  <!-- Elemen dekoratif -->
   <img src="balloon.png" class="balloon" alt="Balon" width="50" />
   <img src="balloon.png" class="balloon" alt="Balon" width="50" style="animation-delay: 1s;" />
   <img src="balloon.png" class="balloon" alt="Balon" width="50" style="animation-delay: 2s;" />
   <img src="balloon.png" class="balloon" alt="Balon" width="50" style="animation-delay: 3s;" />
   <img src="balloon.png" class="balloon" alt="Balon" width="50" style="animation-delay: 4s;" />
-  
-  <!-- Elemen orang joget -->
+
   <img src="dancer.png" class="dancer" alt="Orang Joget" width="100" />
-  
-  <!-- Elemen terompet ulang tahun -->
-  <img src="terompet.png" class="trumpet" alt="Terompet" width="0.5" />
-  
+  <img src="terompet.png" class="trumpet" alt="Terompet" width="50" />
+
+  <!-- Konten utama -->
   <div class="container">
     <div id="intro">
       <h2>Hai Aya! ❤️</h2>
@@ -136,23 +131,19 @@
     </div>
     <div id="message">
       <img src="ulang_tahun_baby.gif" alt="Kue Ulang Tahun" />
-      <audio id="birthday-audio" autoplay loop>
-        <source src="0418.mp3" type="audio/mp3"> 
-      </audio>
     </div>
   </div>
 
   <script>
-      function showMessage() {
-    document.getElementById('intro').style.display = 'none';
-    document.getElementById('message').style.display = 'block';
+    function showMessage() {
+      document.getElementById('intro').style.display = 'none';
+      document.getElementById('message').style.display = 'block';
 
-    // Pastikan audio diputar setelah interaksi
-    var audio = document.getElementById('birthday-audio');
-    audio.play().catch(function(error) {
-      console.log("Autoplay gagal: ", error);
-    });
-  }
+      var audio = document.getElementById('birthday-audio');
+      audio.play().catch(function(error) {
+        console.log("Gagal memutar audio:", error);
+      });
+    }
   </script>
 </body>
 </html>
